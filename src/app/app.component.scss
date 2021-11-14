@@ -1,0 +1,125 @@
+
+@import "../styles/variables";
+
+@mixin mixin-label($mixin-font-size: 1.2rem) {
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: blue;
+    font-size: $mixin-font-size;
+}
+
+
+.maixin-heading {
+    @include mixin-label();
+}
+.mixin-sub-heading {
+    @include mixin-label(1.8rem);
+}
+
+.mixin-para {
+    @include mixin-label();
+    &:hover {
+        color: green;
+    }
+}
+
+.main-heading {
+  $main-heading-color: orange !global;
+  color: $main-heading-color;
+  font-size: $font-size-1;
+}
+
+.sub-heading {
+  color: $main-heading-color;
+  font-size: $font-size-2;
+}
+.paragraph {
+  color: $paragraph-color;
+  font-size: $font-size-3;
+}
+
+.main-section-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  margin: 5rem;
+  border: 1px solid black;
+}
+
+.sub-heading {
+  font-size: 4rem;
+  span {
+    font-size: 2rem;
+    &:hover {
+      color: green;
+    }
+  }
+}
+
+
+@mixin logo ($lighttheme: true) {
+    height: 100px;
+    width: 100px;
+    border: 1px solid blue;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+
+    @if $lighttheme {
+        background: black;
+        color: white;
+    } @else {
+        background: white;
+        color: black;
+    }
+}
+
+
+.logo-container-light {
+    @include logo(true);
+}
+.logo-container-dark {
+    @include logo(false);
+}
+
+.my-button-basic {
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  border:none;
+  font-size: 1.6rem;
+  color: white;
+  border-radius: 3px
+}
+
+.my-cancel-button {
+  @extend .my-button-basic;
+  background: black;
+}
+
+.my-submit-button {
+  @extend .my-button-basic;
+  background: green;
+}
+
+$app-lable-size: (
+  large: 2rem,
+  medium: 1.6rem,
+  small: 1.2rem
+);
+
+.large-label {
+  font-size: map-get($app-lable-size, 'large');
+}
+
+.medium-label {
+  font-size: map-get($app-lable-size, 'medium');
+}
+
+.small-label {
+  font-size: map-get($app-lable-size, 'small');
+}
